@@ -52,11 +52,11 @@ class KegList extends React.Component {
         <NewKegForm handleAddKeg={this.handleAddKeg}/>
         {this.state.kegs.length > 0 && <button className="btn btn-danger" onClick={this.handleRemoveAllKegs}>Remove All Kegs</button>}
         {this.state.kegs.length === 0 && <p>You haven't added any kegs yet!</p>}
-        <div className="card-deck">
+        <div className="row">
         {
           this.state.kegs.map((keg, index) => {
             return (
-              <div className="card" key={index}>
+              <div className="card col-md-6" key={index}>
                 <Keg
                   name={keg.name} 
                   brand={keg.brand}

@@ -1,6 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const expensive = {
+  color: 'orange'
+};
+
+const cheap = {
+  color: 'green'
+};
+
+const emptyKeg = {
+  color: 'red'
+}
+
+const normalKeg = {
+  color: 'blue'
+}
+
 class Keg extends React.Component {
   constructor(props) {
     super(props);
@@ -41,9 +57,9 @@ class Keg extends React.Component {
         <h2 className="card-title">{this.name}</h2>
         <hr/>
         <h3 className="card-text">Brand: {this.brand}</h3>
-        <h4 className="card-text">Price: ${this.price}</h4>
+        <h4 className="card-text">Price: <span style={this.price <= 5 ? cheap : expensive}>${this.price}</span></h4>
         <p className="card-text">ABV: {this.alcohol}%</p>
-        <p className="card-text">Pints: {this.state.capacity}</p>
+        <p className="card-text">Pints: <span style={this.state.capacity <= 10 ? emptyKeg : normalKeg}>{this.state.capacity}</span></p>
         <small><button className="btn btn-success" onClick={() => this.handleSellPint() }>Sell Pint</button></small>
       </div>
     );
