@@ -5,7 +5,7 @@ const Welcome = () => {
     <div>
       Welcome works!
     </div>
-  )
-}
+  );
+};
 
 export default Welcome;

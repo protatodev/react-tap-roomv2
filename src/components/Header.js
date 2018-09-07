@@ -6,6 +6,6 @@ const Header = () => {
       Header Works!
     </div>
   );
-}
+};
 
 export default Header;

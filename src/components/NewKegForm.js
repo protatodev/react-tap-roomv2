@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 class NewKegForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       toggleForm: false
-    }
+    };
     this.showForm = this.showForm.bind(this);
     this.handleAddKeg = this.handleAddKeg.bind(this);
   }
@@ -15,11 +16,11 @@ class NewKegForm extends React.Component {
 
   handleAddKeg(e) {
     e.preventDefault();
-    
+
     const name = e.target.elements.name.value;
     const brand = e.target.elements.brand.value;
-    const price = e.target.elements.price.value;
-    const alcohol = e.target.elements.alcohol.value;
+    const price = parseInt(e.target.elements.price.value);
+    const alcohol = parseInt(e.target.elements.alcohol.value);
 
     const keg = {
       name: name,
@@ -53,5 +54,13 @@ class NewKegForm extends React.Component {
     );
   }
 }
+
+NewKegForm.defaultProps = {
+  kegs: []
+};
+
+NewKegForm.propTypes = {
+  handleAddKeg: PropTypes.function
+};
 
 export default NewKegForm;

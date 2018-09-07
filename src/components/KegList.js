@@ -12,7 +12,7 @@ class KegList extends React.Component {
     this.handleRemoveAllKegs = this.handleRemoveAllKegs.bind(this);
     this.state = {
       kegs: []
-    }
+    };
   }
 
   componentDidMount() {
@@ -35,7 +35,7 @@ class KegList extends React.Component {
   }
 
   handleAddKeg(keg) {
-    if(prevState.kegs.indexOf(keg) === -1) this.setState(prevState => ({kegs: prevState.kegs.concat(keg)}));
+    if(this.state.kegs.indexOf(keg) === -1) this.setState(prevState => ({kegs: prevState.kegs.concat(keg)}));
   }
 
   handleRemoveKeg(keg) {
@@ -54,9 +54,8 @@ class KegList extends React.Component {
         {
           this.state.kegs.map((keg, index) => {
             return (
-              <div>
+              <div key={index}>
                 <Keg
-                  key={index} 
                   name={keg.name} 
                   brand={keg.brand}
                   price={keg.price}
@@ -75,10 +74,10 @@ class KegList extends React.Component {
 
 KegList.defaultProps = {
   kegs: []
-}
+};
 
 KegList.propTypes = {
   kegs: PropTypes.array
-}
+};
 
 export default KegList;
