@@ -1,6 +1,7 @@
 import React from 'react';
 import Keg from './Keg';
 import PropTypes from 'prop-types';
+import NewKegForm from './NewKegForm';
 
 class KegList extends React.Component {
   
@@ -51,10 +52,11 @@ class KegList extends React.Component {
         {this.state.kegs.length > 0 && <button onClick={this.handleRemoveAllKegs}>Remove All Kegs</button>}
         {this.state.kegs.length === 0 && <p>You haven't added any kegs yet!</p>}
         {
-          this.state.kegs.map(keg => {
+          this.state.kegs.map((keg, index) => {
             return (
               <div>
-                <Keg 
+                <Keg
+                  key={index} 
                   name={keg.name} 
                   brand={keg.brand}
                   price={keg.price}
@@ -65,6 +67,7 @@ class KegList extends React.Component {
             );
           })
         }
+        <NewKegForm handleAddKeg={this.handleAddKeg}/>
       </div>
     );
   }
