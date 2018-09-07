@@ -8,7 +8,6 @@ import NewKegForm from './NewKegForm';
 const App = () => {
   return (
     <div>
-      App Works!
       <Header/>
       <KegList/>
       <Switch>

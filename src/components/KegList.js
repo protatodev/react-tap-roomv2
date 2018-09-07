@@ -61,7 +61,7 @@ class KegList extends React.Component {
                   price={keg.price}
                   alcohol={keg.alcohol}  
                 />
-                <small><button onClick={this.handleRemoveKeg(keg)}>Remove</button></small>
+                <small><button onClick={() => this.handleRemoveKeg(keg)}>Remove</button></small>
               </div>
             );
           })
