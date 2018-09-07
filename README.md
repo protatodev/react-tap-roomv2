@@ -15,33 +15,35 @@ This project is meant to mimic and recreate the angular tap-room project created
 
 ## Specifications
 
-The app will allow welcome the user to the website with a splash screen featuring a basic navigation header.
+The app will allow welcome the user to the website with a splash screen featuring a basic navigation header. The navigation menu will initially contain two routes: one to view a list of the kegs currently available, and one to add new kegs.
+
+The KegList route will display all currently available kegs. The kegs will be displayed with their appropriate characteristics such as name, brand, price and alcohol content. As an employee, you will be able to sell a pint and view current keg capacity from this screen. Additional employee functionality will be provided for accessibility.
+
+The NewKeg route will allow an admin to create and list a new keg for sale. They will be able to input features such as the keg name, brand, price and alcohol content.
 
 ## Setup Instructions
 
 * Install Node.js.
-* Install Angular CLI 1.6.5.
 * Clone the project repo.
 * Run `npm install` from project directory.
-* Run `ng serve --open` for a dev server.  It should bring up the page automatically, but navigate to `http://localhost:4200/` if it does not. The app will automatically reload if you change any of the source files.
+* Run `npm run start` for a dev server.  It should bring up the page automatically, but navigate to `http://localhost:8080/#/` if it does not. The app will automatically reload if you change any of the source files.
 
 ## Technologies Used
 
 * HTML5/CSS3
-* Bootstrap
-* ES6
-* Typescipt
+* Javascript / ES6
+* JSX
 * Node.js
-* Angular v5.2.0
-* TSLint
+* React v15 / ReactDOM v15
+* React Router
 
 ## Links
 
-* [Github Repo](https://github.com/wvw999/meme)
-* [Firebase](https://meme-afecf.firebaseapp.com/)
+* [Github Repo](https://github.com/protatodev/react-tap-room)
+* Firebase Support Coming Soon!
 
 ## License
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2018 **Thad Donaghue, Will Swanson, Matt Smith and Craig Wann**
+Copyright (c) 2018 **Protatodev**
