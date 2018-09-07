@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div>
       <Header/>
-      <KegList/>
       <Switch>
         <Route exact path='/' component={Welcome} />
         <Route exact path='/keglist' component={KegList} />
