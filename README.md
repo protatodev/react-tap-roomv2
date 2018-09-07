@@ -1,31 +1,21 @@
-# Meme Generator
+# React Tap Room App
 
-## Epicodus Javascript level 3 group 
+## Epicodus React Level 1 Independent Project 
 
-#### Project August 30, 2018
+#### Project September 07, 2018
 
-#### By Will Swanson, Matt Smith, Thad Donaghue, and Craig Wann
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+#### By Protatodev (Thad Donaghue)
 
 ## Description
 
-Spend any amount of time on the internet and you're quite likely to encounter [memes](https://en.wikipedia.org/wiki/Meme).  The four of us decided to take the established template of running text over an image and giving a user the option to randomize the results and see what entertaining results may happen.  **Please note that while we've taken steps to limit offensive content, this program draws from a number of random sources and the juxtaposed imagery, phrases and attributed speaker of said content may inadvertently yield offensive results**.
+This project is meant to mimic and recreate the angular tap-room project created in week 1 of angular. This project will attempt to recreate the structure and functionality of the angular app using React.
 
 ![screen shot view](tap-room-structure.PNG)
 
 
 ## Specifications
 
-Clicking the `Generate Meme` button on the default `English` setting will cycle through a variety of random images for display as well as overlaying a phrase and attribute that phrase to a notable speaker.  The Quotes are taken in in batches of 100.  Any quotes found to be longer than 100 characters are filtered out and the remainders are stored and used for subsequent clicks so as not to needlessly tax the quote API.
-
-The `Randomized English` applies an additional level of abstraction by randomly comparing nouns, verbs and adjectives in the fetched quote with arrays of similar types of words.  At that point, words are randomly replaced with different words of the same type.
-
-`Japanese`, `Russian`, `Greek` and `Telugu` all present a phrase in the selected language.  Initially we had planned to pass the phrase through a translator API, but each service that we found was prohibitively expensive for our uses.
-
-The `SpEcIaL` feature was initially a solution to fetched quotes that exceeded 100 characters.  The phrase is parsed and truncated after the last full word and the remainder of the sentence is addended with a random ridiculous word or phrase.  We subsequently programmed more elegant ways to avoid text overflowing the background image, but we wanted to keep this functionality as an easter egg.
-
-As an added feature, the page title changes to a new silly phrase with every click.
+The app will allow welcome the user to the website with a splash screen featuring a basic navigation header.
 
 ## Setup Instructions
 
