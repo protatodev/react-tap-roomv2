@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Keg extends React.Component {
   constructor(props) {
@@ -30,10 +31,10 @@ Keg.defaultProps = {
 }
 
 Keg.propTypes = {
-  name: string,
-  brand: string,
-  price: number,
-  alcohol: number
-}
+  name: PropTypes.string,
+  brand: PropTypes.string,
+  price: PropTypes.number,
+  alcohol: PropTypes.number
+};
 
 export default Keg;

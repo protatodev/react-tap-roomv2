@@ -10,6 +10,7 @@ const App = () => {
     <div>
       App Works!
       <Header/>
+      <KegList/>
       <Switch>
         <Route exact path='/' component={Welcome} />
         <Route exact path='/keglist' component={KegList} />
