@@ -35,19 +35,19 @@ class NewKegForm extends React.Component {
   render() {
     return(
       <div>
-        <button onClick={this.showForm}>Add New Keg</button>
+        <button className="btn btn-primary" onClick={this.showForm}>Add New Keg</button>
         {
           this.state.toggleForm && 
           <form onSubmit={this.handleAddKeg}>
             <label htmlFor="name">Enter New Keg Name:</label>
-            <input type="text" name="name" placeholder="e.g, Blue Moon"/>
+            <input className="form-control" type="text" name="name" placeholder="e.g, Blue Moon"/>
             <label htmlFor="brand">Enter Brand Name:</label>
-            <input type="text" name="brand" placeholder="e.g, Deschutes"/>
+            <input className="form-control" type="text" name="brand" placeholder="e.g, Deschutes"/>
             <label htmlFor="price">Enter Price:</label>
-            <input type="number" name="price" placeholder="e.g, 5"/>
+            <input className="form-control" type="number" name="price" placeholder="e.g, 5"/>
             <label htmlFor="alcohol">Enter Alcohol Content:</label>
-            <input type="number" name="alcohol" placeholder="e.g, 10.53"/>
-            <button type="submit">Add Keg</button>
+            <input className="form-control" type="number" name="alcohol" placeholder="e.g, 10.53"/>
+            <button className="btn btn-primary" type="submit">Add Keg</button>
           </form>
         }
       </div>
@@ -60,7 +60,7 @@ NewKegForm.defaultProps = {
 };
 
 NewKegForm.propTypes = {
-  handleAddKeg: PropTypes.function
+  handleAddKeg: PropTypes.func
 };
 
 export default NewKegForm;
