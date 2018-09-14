@@ -12,11 +12,11 @@ const cheap = {
 
 const emptyKeg = {
   color: 'red'
-}
+};
 
 const normalKeg = {
   color: 'blue'
-}
+};
 
 class Keg extends React.Component {
   constructor(props) {
@@ -53,6 +53,10 @@ class Keg extends React.Component {
     this.setState(prevState => ({ capacity: prevState.capacity - 1}));
   }
 
+  handleRemoveKeg() {
+    this.props.handleRemoveKeg(this.id);
+  }
+
   render() {
     return(
       <div className="card-body">
@@ -63,6 +67,7 @@ class Keg extends React.Component {
         <p className="card-text">ABV: {this.alcohol}%</p>
         <p className="card-text">Pints: <span style={this.state.capacity <= 10 ? emptyKeg : normalKeg}>{this.state.capacity}</span></p>
         <small><button className="btn btn-success" onClick={() => this.handleSellPint() }>Sell Pint</button></small>
+        <small><button className="btn btn-danger" onClick={() => this.handleRemoveKeg() }>Remove Keg</button></small>
       </div>
     );
   }
@@ -77,7 +82,9 @@ Keg.propTypes = {
   brand: PropTypes.string,
   price: PropTypes.number,
   alcohol: PropTypes.number,
-  capacity: PropTypes.number
+  capacity: PropTypes.number,
+  id: PropTypes.string,
+  handleRemoveKeg: PropTypes.func
 };
 
 export default Keg;

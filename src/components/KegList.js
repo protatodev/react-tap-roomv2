@@ -7,7 +7,7 @@ class KegList extends React.Component {
     super(props);
     this.state = {
       kegs: this.props.kegs
-    }
+    };
   }
 
   componentDidMount() {
@@ -21,34 +21,28 @@ class KegList extends React.Component {
       // Do nothing
     }
   }
-
-  componentDidUpdate(prevProps, prevState) {
-    if(prevState.kegs.length !== this.state.kegs.length) {
-      const json = JSON.stringify(this.state.kegs);
-      localStorage.setItem('kegs', json);
-    }
-  }
   
   render() {
     return (
       <div>
         <div className="row">
-        {!this.state.kegs && <h3>No keg's have been listed yet. Check back soon!</h3>}
-        {
-          this.state.kegs && this.state.kegs.map((keg, index) => {
-            return (
-              <div className="card col-md-6" key={index}>
-                <Keg
-                  name={keg.name} 
-                  brand={keg.brand}
-                  price={keg.price}
-                  alcohol={keg.alcohol}  
-                  id={keg.id}
-                />
-              </div>
-            );
-          })
-        }
+          {!this.state.kegs && <h3>No keg's have been listed yet. Check back soon!</h3>}
+          {
+            this.state.kegs && this.state.kegs.map((keg, index) => {
+              return (
+                <div className="card col-md-6" key={index}>
+                  <Keg
+                    name={keg.name} 
+                    brand={keg.brand}
+                    price={keg.price}
+                    alcohol={keg.alcohol}  
+                    id={keg.id}
+                    handleRemoveKeg={this.props.handleRemoveKeg}
+                  />
+                </div>
+              );
+            })
+          }
         </div>
       </div>
     );
@@ -56,7 +50,8 @@ class KegList extends React.Component {
 }
 
 KegList.propTypes = {
-  kegs: PropTypes.array
+  kegs: PropTypes.array,
+  handleRemoveKeg: PropTypes.func
 };
 
 export default KegList;

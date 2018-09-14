@@ -7,18 +7,20 @@ class Admin extends React.Component {
     super(props);
     this.state = {
       kegs: []
-    }
+    };
     this.handleAddKeg = this.handleAddKeg.bind(this);
     this.handleRemoveKeg = this.handleRemoveKeg.bind(this);
     this.handleRemoveAllKegs = this.handleRemoveAllKegs.bind(this);
   }
 
   handleAddKeg(keg) {
+    console.log(keg);
     if(this.state.kegs.indexOf(keg) === -1) this.setState(prevState => ({kegs: prevState.kegs.concat(keg)}));
+    console.log(this.state.kegs);
   }
 
-  handleRemoveKeg(keg) {
-    this.setState(prevState => ({kegs: prevState.kegs.filter(p => p !== keg)}));
+  handleRemoveKeg(id) {
+    this.setState(prevState => ({kegs: prevState.kegs.filter(p => p.id !== id)}));
   }
 
   handleRemoveAllKegs() {
@@ -50,8 +52,7 @@ class Admin extends React.Component {
         {this.state.kegs.length > 0 && <button className="btn btn-danger" onClick={this.handleRemoveAllKegs}>Remove All Kegs</button>}
         {this.state.kegs.length === 0 && <p>You haven't added any kegs yet!</p>}
         <NewKegForm handleAddKeg={this.handleAddKeg}/>
-        <KegList kegs={this.state.kegs.slice(0)}/>
-        <small><button className="btn btn-danger" onClick={() => this.handleRemoveKeg(keg)}>Remove</button></small>
+        <KegList handleRemoveKeg={this.handleRemoveKeg} kegs={this.state.kegs.slice(0)}/>
       </div>
     );
   }
