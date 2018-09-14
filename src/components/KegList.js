@@ -43,6 +43,7 @@ class KegList extends React.Component {
                   brand={keg.brand}
                   price={keg.price}
                   alcohol={keg.alcohol}  
+                  id={keg.id}
                 />
               </div>
             );

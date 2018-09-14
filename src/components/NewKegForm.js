@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'uuid';
 class NewKegForm extends React.Component {
   constructor(props) {
     super(props);
@@ -20,13 +21,13 @@ class NewKegForm extends React.Component {
     const name = e.target.elements.name.value;
     const brand = e.target.elements.brand.value;
     const price = parseInt(e.target.elements.price.value);
-    const alcohol = parseInt(e.target.elements.alcohol.value);
 
     const keg = {
       name: name,
       brand: brand,
       price: price,
-      alcohol: alcohol
+      alcohol: alcohol,
+      id: uuid()
     };
 
     this.props.handleAddKeg(keg);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const expensive = {
   color: 'orange'
 };
@@ -28,11 +29,12 @@ class Keg extends React.Component {
     this.price = props.price;
     this.alcohol = props.alcohol;
     this.handleSellPint = this.handleSellPint.bind(this);
+    this.id = props.id;
   }
 
   componentDidMount() {
     try {
-      const count = parseInt(localStorage.getItem('count'));
+      const count = parseInt(localStorage.getItem(this.id));
 
       if(count) this.setState(() => ({ capacity: count }));
     }
@@ -43,7 +45,7 @@ class Keg extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.capacity !== this.state.capacity) {
-      localStorage.setItem('count', this.state.capacity);
+      localStorage.setItem(this.id, this.state.capacity);
     }
   }
 
