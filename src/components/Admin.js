@@ -50,7 +50,8 @@ class Admin extends React.Component {
         {this.state.kegs.length > 0 && <button className="btn btn-danger" onClick={this.handleRemoveAllKegs}>Remove All Kegs</button>}
         {this.state.kegs.length === 0 && <p>You haven't added any kegs yet!</p>}
         <NewKegForm/>
-        <KegList/>
+        <KegList kegs={this.state.kegs.slice(0)}/>
+        <small><button className="btn btn-danger" onClick={() => this.handleRemoveKeg(keg)}>Remove</button></small>
       </div>
     );
   }
