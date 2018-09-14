@@ -6,11 +6,12 @@ class KegList extends React.Component {
   
   constructor(props) {
     super(props);
+    console.log(this.props.updateState());
     this.state = {
-      kegs: this.props.kegs
+      kegs: []
     };
   }
-  
+
   render() {
     return(
       <div>

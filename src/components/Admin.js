@@ -1,58 +1,83 @@
 import React from 'react';
-import NewKegForm from './NewKegForm';
 import KegList from './KegList';
+import { addKeg, removeKeg, removeAllKegs } from '../actions/actions';
+import store from '../store/store';
+import uuid from 'uuid';
+import { connect } from 'react-redux';
 
 class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kegs: []
+      kegs: [],
+      toggleForm: false
     };
+    this.showForm = this.showForm.bind(this);
     this.handleAddKeg = this.handleAddKeg.bind(this);
-    this.handleRemoveKeg = this.handleRemoveKeg.bind(this);
-    this.handleRemoveAllKegs = this.handleRemoveAllKegs.bind(this);
   }
 
-  handleAddKeg(keg) {
-    console.log(keg);
-    if(this.state.kegs.indexOf(keg) === -1) this.setState(prevState => ({kegs: prevState.kegs.concat(keg)}));
-    console.log(this.state.kegs);
+  handleAddKeg(e) {
+    e.preventDefault();
+
+    const name = e.target.elements.name.value;
+    const brand = e.target.elements.brand.value;
+    const price = parseInt(e.target.elements.price.value);
+    const alcohol = parseInt(e.target.elements.alcohol.value);
+
+    const keg = {
+      name: name,
+      brand: brand,
+      price: price,
+      alcohol: alcohol,
+      id: uuid()
+    };
+
+    store.dispatch(addKeg(keg));
+    this.setState(() => ({ kegs: store.getState(), toggleform: false}));
+    console.log(this.state);
   }
 
-  handleRemoveKeg(id) {
-    this.setState(prevState => ({kegs: prevState.kegs.filter(p => p.id !== id)}));
+  handleRemoveKeg(keg) {
+    store.dispatch(removeKeg(keg));
   }
 
   handleRemoveAllKegs() {
-    this.setState(() => ({kegs: []}));
+    store.dispatch(removeAllKegs());
+  }
+
+  showForm() {
+    this.setState(prevState => ({ toggleForm: !prevState.toggleForm }));
   }
 
   componentDidMount() {
-    try {
-      const json = localStorage.getItem('kegs');
-      const kegs = JSON.parse(json);
-
-      if(kegs) this.setState(() => ({ kegs }));
-    }
-    catch(e) {
-      // Do nothing
-    }
+    console.log(store.getState());
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.kegs.length !== this.state.kegs.length) {
-      const json = JSON.stringify(this.state.kegs);
-      localStorage.setItem('kegs', json);
-    }
+    console.log(store.getState());
   }
 
   render() {
     return(
       <div>
-        {this.state.kegs.length > 0 && <button className="btn btn-danger" onClick={this.handleRemoveAllKegs}>Remove All Kegs</button>}
-        {this.state.kegs.length === 0 && <p>You haven't added any kegs yet!</p>}
-        <NewKegForm handleAddKeg={this.handleAddKeg}/>
-        <KegList handleRemoveKeg={this.handleRemoveKeg} kegs={this.state.kegs.slice(0)}/>
+        Admin works!
+        <div>
+        <button className="btn btn-primary" onClick={this.showForm}>Add New Keg</button>
+        {
+          this.state.toggleForm && 
+          <form onSubmit={this.handleAddKeg}>
+            <label htmlFor="name">Enter New Keg Name:</label>
+            <input className="form-control" type="text" name="name" placeholder="e.g, Blue Moon"/>
+            <label htmlFor="brand">Enter Brand Name:</label>
+            <input className="form-control" type="text" name="brand" placeholder="e.g, Deschutes"/>
+            <label htmlFor="price">Enter Price:</label>
+            <input className="form-control" type="number" name="price" placeholder="e.g, 5"/>
+            <label htmlFor="alcohol">Enter Alcohol Content:</label>
+            <input className="form-control" type="number" name="alcohol" placeholder="e.g, 10.53"/>
+            <button className="btn btn-primary" type="submit">Add Keg</button>
+          </form>
+        }
+      </div>
       </div>
     );
   }
