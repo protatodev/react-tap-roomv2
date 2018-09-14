@@ -6,7 +6,6 @@ class KegList extends React.Component {
   
   constructor(props) {
     super(props);
-    console.log(this.props.updateState());
     this.state = {
       kegs: []
     };
@@ -16,22 +15,22 @@ class KegList extends React.Component {
     return(
       <div>
         <div className="row">
-        {
-          this.state.kegs.map((keg, index) => {
-            return (
-              <div className="card col-md-6" key={index}>
-                <Keg
-                  name={keg.name} 
-                  brand={keg.brand}
-                  price={keg.price}
-                  alcohol={keg.alcohol}  
-                  id={keg.id}
-                  handleRemoveKeg={this.props.handleRemoveKeg}
-                />
-              </div>
-            );
-          })
-        }
+          {
+            this.state.kegs.map((keg, index) => {
+              return (
+                <div className="card col-md-6" key={index}>
+                  <Keg
+                    name={keg.name} 
+                    brand={keg.brand}
+                    price={keg.price}
+                    alcohol={keg.alcohol}  
+                    id={keg.id}
+                    handleRemoveKeg={this.props.handleRemoveKeg}
+                  />
+                </div>
+              );
+            })
+          }
         </div>
       </div>
     );

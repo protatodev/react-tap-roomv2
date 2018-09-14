@@ -1,9 +1,6 @@
 import React from 'react';
 import KegList from './KegList';
-import { addKeg, removeKeg, removeAllKegs } from '../actions/actions';
-import store from '../store/store';
 import uuid from 'uuid';
-import { connect } from 'react-redux';
 
 class Admin extends React.Component {
   constructor(props) {
@@ -31,30 +28,26 @@ class Admin extends React.Component {
       alcohol: alcohol,
       id: uuid()
     };
-
-    store.dispatch(addKeg(keg));
-    this.setState(() => ({ kegs: store.getState(), toggleform: false}));
-    console.log(this.state);
   }
 
   handleRemoveKeg(keg) {
-    store.dispatch(removeKeg(keg));
+
   }
 
   handleRemoveAllKegs() {
-    store.dispatch(removeAllKegs());
+
   }
 
   showForm() {
-    this.setState(prevState => ({ toggleForm: !prevState.toggleForm }));
+
   }
 
   componentDidMount() {
-    console.log(store.getState());
+
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(store.getState());
+
   }
 
   render() {
@@ -62,22 +55,22 @@ class Admin extends React.Component {
       <div>
         Admin works!
         <div>
-        <button className="btn btn-primary" onClick={this.showForm}>Add New Keg</button>
-        {
-          this.state.toggleForm && 
-          <form onSubmit={this.handleAddKeg}>
-            <label htmlFor="name">Enter New Keg Name:</label>
-            <input className="form-control" type="text" name="name" placeholder="e.g, Blue Moon"/>
-            <label htmlFor="brand">Enter Brand Name:</label>
-            <input className="form-control" type="text" name="brand" placeholder="e.g, Deschutes"/>
-            <label htmlFor="price">Enter Price:</label>
-            <input className="form-control" type="number" name="price" placeholder="e.g, 5"/>
-            <label htmlFor="alcohol">Enter Alcohol Content:</label>
-            <input className="form-control" type="number" name="alcohol" placeholder="e.g, 10.53"/>
-            <button className="btn btn-primary" type="submit">Add Keg</button>
-          </form>
-        }
-      </div>
+          <button className="btn btn-primary" onClick={this.showForm}>Add New Keg</button>
+          {
+            this.state.toggleForm && 
+            <form onSubmit={this.handleAddKeg}>
+              <label htmlFor="name">Enter New Keg Name:</label>
+              <input className="form-control" type="text" name="name" placeholder="e.g, Blue Moon"/>
+              <label htmlFor="brand">Enter Brand Name:</label>
+              <input className="form-control" type="text" name="brand" placeholder="e.g, Deschutes"/>
+              <label htmlFor="price">Enter Price:</label>
+              <input className="form-control" type="number" name="price" placeholder="e.g, 5"/>
+              <label htmlFor="alcohol">Enter Alcohol Content:</label>
+              <input className="form-control" type="number" name="alcohol" placeholder="e.g, 10.53"/>
+              <button className="btn btn-primary" type="submit">Add Keg</button>
+            </form>
+          }
+        </div>
       </div>
     );
   }

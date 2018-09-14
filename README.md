@@ -1,8 +1,8 @@
-# React Tap Room App
+# React Tap Room App V2
 
-## Epicodus React Level 1 Independent Project 
+## Epicodus React Level 2 Independent Project 
 
-#### Project September 07, 2018
+#### Project September 14, 2018
 
 #### By Protatodev (Thad Donaghue)
 
@@ -36,10 +36,11 @@ The NewKeg route will allow an admin to create and list a new keg for sale. They
 * Node.js
 * React v15 / ReactDOM v15
 * React Router
+* Redux
 
 ## Links
 
-* [Github Repo](https://github.com/protatodev/react-tap-room)
+* [Github Repo](https://github.com/protatodev/react-tap-roomv2)
 * Firebase Support Coming Soon!
 
 ## License
